@@ -14,7 +14,7 @@ services:
     environment:
       NODE_ENV: production
     volumes:
-      - ./src:/home/node
+      - ./:/home/node
       - growth-app-volume:/home/node/node_modules
 
 networks:

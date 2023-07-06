@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Cart } from '../models/Cart';
-import { CartHasItem } from '../models/CartHasItem';
-import { Item } from '../models/Item';
+import { Cart } from '../models/cart.model';
+import { CartHasItem } from '../models/cart-has-item.model';
+import { Item } from '../models/item.model';
 
 @Injectable()
 export class CartFactory {
-  generateCarts(): Cart[] {
+  generateCartsWithItem(): Cart[] {
     return [
       {
         id: 53,
