@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Customer } from '../models/customer.model';
+import { Customer } from '../../models/customer.model';
+import { ICustomerFactory } from './customer.factory.interface';
 
 @Injectable()
-export class CustomerFactory {
+export class CustomerFactory implements ICustomerFactory {
   generateCustomer(): Customer[] {
     return [
       {

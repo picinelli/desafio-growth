@@ -1,18 +1,17 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { FindOportunityService } from '../services/find-oportunity.service';
 import { Oportunity } from '../models/oportunity.model';
+import { IListOportunityService } from '../services/oportunity/list/list-oportunity.service.interface';
 
 @Controller('/oportunity')
 export class OportunityController {
-  constructor(private readonly findOportunityService: FindOportunityService) {}
+  constructor(private readonly findOportunityService: IListOportunityService) {}
 
   @Get('/organization/:organizationId')
   findByOrganizationId(
     @Param('organizationId') organizationId: any,
   ): Oportunity[] {
     organizationId = Number(organizationId);
-    return this.findOportunityService.listOportunitiesByOrganizationId(
-      organizationId,
-    );
+
+    return this.findOportunityService.execute(organizationId);
   }
 }

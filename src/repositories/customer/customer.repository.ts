@@ -1,12 +1,12 @@
 import { Injectable, Scope } from '@nestjs/common';
-import { CustomerFactory } from '../factory/customer.factory';
-import { Customer } from '../models/customer.model';
+import { Customer } from '../../models/customer.model';
+import { ICustomerFactory } from '../../factory/customer/customer.factory.interface';
 
 @Injectable({ scope: Scope.DEFAULT })
 export class CustomerRepository {
   private customers: Customer[];
 
-  constructor(private customerFactory: CustomerFactory) {
+  constructor(private customerFactory: ICustomerFactory) {
     this.customers = customerFactory.generateCustomer();
   }
 

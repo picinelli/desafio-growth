@@ -1,24 +1,29 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Cart } from '../models/cart.model';
-import { OrganizationRepository } from '../repositories/organization.repository';
-import { CrmRepository } from '../repositories/crm.repository';
-import { CustomerRepository } from '../repositories/customer.repository';
-import { OportunityRepository } from '../repositories/oportunity.repository';
-import { Oportunity } from '../models/oportunity.model';
-import { CartHasItem } from '../models/cart-has-item.model';
-import { Customer } from '../models/customer.model';
-import { ICartRepository } from '../repositories/cart/cart.repository.interface';
+import { Cart } from '../../../models/cart.model';
+import { OrganizationRepository } from '../../../repositories/organization/organization.repository';
+import { CrmRepository } from '../../../repositories/crm/crm.repository';
+import { CustomerRepository } from '../../../repositories/customer/customer.repository';
+import { OportunityRepository } from '../../../repositories/oportunity/oportunity.repository';
+import { Oportunity } from '../../../models/oportunity.model';
+import { CartHasItem } from '../../../models/cart-has-item.model';
+import { Customer } from '../../../models/customer.model';
+import { ICartRepository } from '../../../repositories/cart/cart.repository.interface';
+import { ISaveOportunityService } from './save-oportunity.service.interface';
+import { IOrganizationRepository } from '../../../repositories/organization/organization.repository.interface';
+import { ICrmRepository } from '../../../repositories/crm/crm.repository.interface';
+import { ICustomerRepository } from '../../../repositories/customer/customer.repository.interface';
+import { IOportunityRepository } from '../../../repositories/oportunity/oportunity.repository.interface';
 
 @Injectable()
-export class SaveOportunityService {
+export class SaveOportunityService implements ISaveOportunityService {
   constructor(
     private cartRepository: ICartRepository,
-    private organizationRepository: OrganizationRepository,
-    private crmRepository: CrmRepository,
-    private customerRepository: CustomerRepository,
-    private oportunityRepository: OportunityRepository,
+    private organizationRepository: IOrganizationRepository,
+    private crmRepository: ICrmRepository,
+    private customerRepository: ICustomerRepository,
+    private oportunityRepository: IOportunityRepository,
   ) {}
-  sendAbandonedCartToCRM(id: number): Cart | void {
+  execute(id: number): Cart | void {
     const cart = this.cartRepository.findById(id);
 
     if (!cart) {

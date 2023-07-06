@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Organization } from '../models/organization.model';
+import { Organization } from '../../models/organization.model';
+import { IOrganizationFactory } from './organization.factory.interface';
 
 @Injectable()
-export class OrganizationFactory {
+export class OrganizationFactory implements IOrganizationFactory {
   generateOrganization(): Organization[] {
     return [
       {

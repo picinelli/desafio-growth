@@ -1,5 +1,5 @@
 import { Injectable, Scope } from '@nestjs/common';
-import { Oportunity } from '../models/oportunity.model';
+import { Oportunity } from '../../models/oportunity.model';
 
 @Injectable({ scope: Scope.DEFAULT })
 export class OportunityRepository {

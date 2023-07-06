@@ -1,12 +1,12 @@
 import { Injectable, Scope } from '@nestjs/common';
-import { Organization } from '../models/organization.model';
-import { OrganizationFactory } from '../factory/organization.factory';
+import { Organization } from '../../models/organization.model';
+import { IOrganizationFactory } from '../../factory/organization/organization.factory.interface';
 
 @Injectable({ scope: Scope.DEFAULT })
 export class OrganizationRepository {
   private organizations: Organization[];
 
-  constructor(private organizationFactory: OrganizationFactory) {
+  constructor(private organizationFactory: IOrganizationFactory) {
     this.organizations = organizationFactory.generateOrganization();
   }
 

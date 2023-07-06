@@ -1,16 +1,16 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { SaveOportunityService } from '../services/save-oportunity.service';
+import { ISaveOportunityService } from '../services/oportunity/save/save-oportunity.service.interface';
 
 @Controller('/cart')
 export class CartController {
-  constructor(private readonly saveOportunityService: SaveOportunityService) {}
+  constructor(private readonly saveOportunityService: ISaveOportunityService) {}
 
   @MessagePattern('cart-abandoned')
   async sendMessage(
     @Payload() payload: SendAbandonedCartMessage,
   ): Promise<void> {
-    this.saveOportunityService.sendAbandonedCartToCRM(payload.id);
+    this.saveOportunityService.execute(payload.id);
   }
 }
 

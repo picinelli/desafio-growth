@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Organization } from '../models/organization.model';
-import { Crm } from '../models/crm.model';
+import { Crm } from '../../models/crm.model';
+import { ICrmFactory } from './crm.factory.interface';
 
 @Injectable()
-export class CrmFactory {
+export class CrmFactory implements ICrmFactory {
   generateCrm(): Crm[] {
     return [
       {
