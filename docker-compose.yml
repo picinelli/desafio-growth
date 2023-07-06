@@ -1,0 +1,25 @@
+version: '3'
+services:
+  growth-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: growth-app
+    container_name: growth-app
+    restart: unless-stopped
+    networks:
+      - projeto-growth_growth_kafka_net
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./src:/home/node
+      - growth-app-volume:/home/node/node_modules
+
+networks:
+  projeto-growth_growth_kafka_net:
+    external: true
+
+volumes:
+  growth-app-volume:
