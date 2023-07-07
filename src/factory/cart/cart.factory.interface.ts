@@ -5,7 +5,7 @@ import { Item } from '../../models/item.model';
 export abstract class ICartFactory {
   abstract generateCartsWithItem(): Cart[];
 
-  abstract generateCartHasItem(): CartHasItem;
+  abstract generateCartHasItem(cartId: number): CartHasItem;
 
   abstract generateItem(): Item;
 }

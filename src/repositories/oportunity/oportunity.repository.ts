@@ -1,8 +1,9 @@
 import { Injectable, Scope } from '@nestjs/common';
 import { Oportunity } from '../../models/oportunity.model';
+import { IOportunityRepository } from './oportunity.repository.interface';
 
 @Injectable({ scope: Scope.DEFAULT })
-export class OportunityRepository {
+export class OportunityRepository implements IOportunityRepository {
   private oportunities: Oportunity[] = [];
 
   listByCrmId(crmId: number) {

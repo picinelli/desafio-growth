@@ -6,6 +6,8 @@ import { ICartFactory } from './cart.factory.interface';
 
 @Injectable()
 export class CartFactory implements ICartFactory {
+  private cartHasItemAmount = 0;
+
   generateCartsWithItem(): Cart[] {
     return [
       {
@@ -14,15 +16,25 @@ export class CartFactory implements ICartFactory {
         updated: new Date(),
         customerId: 1,
         organizationId: 1,
-        cartHasItem: [this.generateCartHasItem()],
+        cartHasItem: [this.generateCartHasItem(53)],
+      },
+      {
+        id: 54,
+        created: new Date(),
+        updated: new Date(),
+        customerId: 1,
+        organizationId: 2,
+        cartHasItem: [this.generateCartHasItem(54)],
       },
     ];
   }
 
-  generateCartHasItem(): CartHasItem {
+  generateCartHasItem(cartId: number): CartHasItem {
+    this.cartHasItemAmount++;
+
     return {
-      id: 1,
-      cartId: 53,
+      id: this.cartHasItemAmount,
+      cartId: cartId,
       itemId: 10,
       quantity: 5,
       item: this.generateItem(),

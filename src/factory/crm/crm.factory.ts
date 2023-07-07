@@ -13,6 +13,13 @@ export class CrmFactory implements ICrmFactory {
         created: new Date(),
         updated: new Date(),
       },
+      {
+        id: 2,
+        name: 'Projeto B',
+        organizationId: 2,
+        created: new Date(),
+        updated: new Date(),
+      },
     ];
   }
 }

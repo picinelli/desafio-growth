@@ -1,7 +1,8 @@
+import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import Config from './config/config';
+import config from './config/config';
 
 declare const module: any;
 
@@ -12,7 +13,7 @@ async function bootstrap() {
     transport: Transport.KAFKA,
     options: {
       client: {
-        brokers: [Config.kafka.address],
+        brokers: [config.kafka.address],
       },
       consumer: {
         groupId: 'cart-abandoned',
@@ -21,7 +22,7 @@ async function bootstrap() {
   });
 
   await app.startAllMicroservices();
-  await app.listen(3000);
+  await app.listen(config.server.port);
 
   if (module.hot) {
     module.hot.accept();

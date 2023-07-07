@@ -13,7 +13,7 @@ import { CrmRepository } from './repositories/crm/crm.repository';
 import { OportunityRepository } from './repositories/oportunity/oportunity.repository';
 import { ListOportunityService } from './services/oportunity/list/list-oportunity.service';
 import { OportunityController } from './controllers/oportunity.controller';
-import { CartController } from './controllers/cart.controller';
+import { CartController } from './controllers/kafka/cart.controller';
 import { ICartRepository } from './repositories/cart/cart.repository.interface';
 import { ICrmRepository } from './repositories/crm/crm.repository.interface';
 import { ICustomerRepository } from './repositories/customer/customer.repository.interface';
@@ -25,17 +25,18 @@ import { ICustomerFactory } from './factory/customer/customer.factory.interface'
 import { IOrganizationFactory } from './factory/organization/organization.factory.interface';
 import { IListOportunityService } from './services/oportunity/list/list-oportunity.service.interface';
 import { ISaveOportunityService } from './services/oportunity/save/save-oportunity.service.interface';
+import config from './config/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     ClientsModule.register([
       {
-        name: 'CART_ABANDONED_SERVICE',
+        name: 'CART_SERVICE',
         transport: Transport.KAFKA,
         options: {
           client: {
-            brokers: ['kafka:9092'],
+            brokers: [config.kafka.address],
           },
           consumer: {
             groupId: 'cart-abandoned',

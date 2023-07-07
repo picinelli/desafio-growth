@@ -12,6 +12,12 @@ export class OrganizationFactory implements IOrganizationFactory {
         created: new Date(),
         updated: new Date(),
       },
+      {
+        id: 2,
+        name: 'Projeto B',
+        created: new Date(),
+        updated: new Date(),
+      },
     ];
   }
 }

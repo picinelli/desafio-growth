@@ -1,8 +1,8 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { ISaveOportunityService } from '../services/oportunity/save/save-oportunity.service.interface';
+import { ISaveOportunityService } from '../../services/oportunity/save/save-oportunity.service.interface';
 
-@Controller('/cart')
+@Controller()
 export class CartController {
   constructor(private readonly saveOportunityService: ISaveOportunityService) {}
 
