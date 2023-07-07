@@ -101,6 +101,6 @@ Para visualizar as oportunidades salvas, verifique as [rotas](#rotas) abaixo.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=blue
-[linkedin-url]: https://www.linkedin.com/in/pedro-ivo-brum-cinelli//
+[linkedin-url]: https://www.linkedin.com/in/picinelli/
 [mail-shield]: https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white
 [mail-url]: mailto:cinelli.dev@gmail.com
